@@ -443,6 +443,29 @@
   </div>
 </div>
 
+<!-- ===== POPUP DE SUSCRIPCIÓN ===== -->
+<div class="newsletter-overlay" id="newsletterOverlay"></div>
+<div class="newsletter-popup" id="newsletterPopup" role="dialog" aria-modal="true" aria-labelledby="newsletterTitle">
+  <button class="newsletter-popup__close" id="newsletterClose" aria-label="Cerrar">&times;</button>
+
+  <div class="newsletter-popup__badge">-20%</div>
+  <h3 id="newsletterTitle">20% de descuento en tu primera compra</h3>
+  <p>Súmate y te damos tu código de descuento al instante.</p>
+
+  <form class="newsletter-popup__form" id="newsletterForm">
+    <input type="email" id="newsletterEmail" placeholder="tu@correo.com" required aria-label="Correo electrónico">
+    <button type="submit" class="btn btn--primary btn--full">Obtener mi 20%</button>
+  </form>
+
+  <div class="newsletter-popup__success" id="newsletterSuccess" hidden>
+    <p>¡Listo! Tu código es:</p>
+    <p class="newsletter-popup__code">BASKET20</p>
+    <p class="newsletter-popup__hint">Cópialo y úsalo al finalizar tu compra.</p>
+  </div>
+
+  <p class="newsletter-popup__legal">Sin spam. Puedes darte de baja cuando quieras.</p>
+</div>
+
 <!-- ===== CARRITO ===== -->
 <div class="cart-overlay" id="cartOverlay"></div>
 <aside class="cart-drawer" id="cartDrawer">

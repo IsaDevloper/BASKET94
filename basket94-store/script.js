@@ -190,6 +190,59 @@ const CART_KEY = 'basket94_cart';
 const FREE_SHIPPING_THRESHOLD = 1200;
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// ============ NEWSLETTER POPUP ============
+const NEWSLETTER_KEY = 'basket94_newsletter_status';
+
+function openNewsletterPopup(){
+  document.getElementById('newsletterPopup').classList.add('is-open');
+  document.getElementById('newsletterOverlay').classList.add('is-open');
+}
+
+function closeNewsletterPopup(){
+  document.getElementById('newsletterPopup').classList.remove('is-open');
+  document.getElementById('newsletterOverlay').classList.remove('is-open');
+}
+
+function initNewsletterPopup(){
+  const popup = document.getElementById('newsletterPopup');
+  const overlay = document.getElementById('newsletterOverlay');
+  const closeBtn = document.getElementById('newsletterClose');
+  const form = document.getElementById('newsletterForm');
+  if(!popup || !overlay || !form) return;
+
+  let status = null;
+  try{ status = localStorage.getItem(NEWSLETTER_KEY); }catch(e){ status = null; }
+
+  // Only show once per browser: skip if already subscribed or dismissed
+  if(status === 'subscribed' || status === 'dismissed') return;
+
+  // Appears right as the preloader finishes fading out
+  setTimeout(openNewsletterPopup, 3800);
+
+  closeBtn.addEventListener('click', () => {
+    closeNewsletterPopup();
+    try{ localStorage.setItem(NEWSLETTER_KEY, 'dismissed'); }catch(e){}
+  });
+  overlay.addEventListener('click', () => {
+    closeNewsletterPopup();
+    try{ localStorage.setItem(NEWSLETTER_KEY, 'dismissed'); }catch(e){}
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value.trim();
+    if(!email) return;
+
+    try{
+      localStorage.setItem(NEWSLETTER_KEY, 'subscribed');
+      localStorage.setItem('basket94_newsletter_email', email);
+    }catch(err){}
+
+    form.hidden = true;
+    document.getElementById('newsletterSuccess').hidden = false;
+  });
+}
+
 // ============ PRELOADER ============
 function initPreloader(){
   const preloader = document.getElementById('preloader');
@@ -393,6 +446,7 @@ function setActiveSize(size){
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
+  initNewsletterPopup();
   initHero();
   renderCart();
 
@@ -413,7 +467,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('productModalClose').addEventListener('click', closeProductModal);
   document.getElementById('productModalOverlay').addEventListener('click', closeProductModal);
   document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') closeProductModal();
+    if(e.key === 'Escape'){
+      closeProductModal();
+      if(document.getElementById('newsletterPopup').classList.contains('is-open')){
+        closeNewsletterPopup();
+        try{ localStorage.setItem(NEWSLETTER_KEY, 'dismissed'); }catch(err){}
+      }
+    }
   });
   document.getElementById('pmAddBtn').addEventListener('click', () => {
     if(!currentModalId) return;

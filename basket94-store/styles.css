@@ -492,6 +492,68 @@ h1, h2, h3{ font-family: var(--font-display); font-weight: 400; letter-spacing: 
   .product-modal__body{ grid-template-columns: 1fr; padding: 0 1.25rem 1.5rem; }
 }
 
+/* ============ NEWSLETTER POPUP ============ */
+.newsletter-overlay{
+  position: fixed; inset:0; background: rgba(23,19,16,0.6);
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 97;
+}
+.newsletter-overlay.is-open{ opacity: 1; pointer-events: auto; }
+
+.newsletter-popup{
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -46%);
+  width: min(420px, 90vw);
+  background: var(--ink); color: var(--chalk);
+  border-radius: var(--radius);
+  padding: 2.4rem 2rem 2rem;
+  text-align: center;
+  z-index: 98;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 30px 60px rgba(23,19,16,0.4);
+}
+.newsletter-popup.is-open{ opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); }
+
+.newsletter-popup__close{
+  position: absolute; top: 0.8rem; right: 1rem;
+  background: none; border: none; color: var(--chalk);
+  font-size: 1.7rem; line-height: 1; cursor: pointer;
+}
+
+.newsletter-popup__badge{
+  width: 74px; height: 74px; border-radius: 50%;
+  background: var(--orange); color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.3rem;
+  margin: 0 auto 1.2rem; transform: rotate(-8deg);
+  box-shadow: 0 8px 20px rgba(225,89,26,0.35);
+}
+
+.newsletter-popup h3{ font-size: 1.5rem; line-height: 1.15; margin-bottom: 0.6rem; }
+.newsletter-popup > p{ color: rgba(251,247,239,0.8); font-size: 0.92rem; margin-bottom: 1.4rem; }
+
+.newsletter-popup__form{ display: flex; flex-direction: column; gap: 0.8rem; }
+.newsletter-popup__form input{
+  padding: 0.85rem 1rem; border-radius: 999px;
+  border: 1px solid rgba(251,247,239,0.25);
+  background: rgba(251,247,239,0.06); color: var(--chalk);
+  font-family: var(--font-body); font-size: 0.95rem;
+}
+.newsletter-popup__form input::placeholder{ color: rgba(251,247,239,0.45); }
+
+.newsletter-popup__success p{ color: rgba(251,247,239,0.85); font-size: 0.92rem; margin-bottom: 0.6rem; }
+.newsletter-popup__code{
+  font-family: var(--font-mono); font-size: 1.6rem; letter-spacing: 0.12em;
+  background: rgba(251,247,239,0.08); border: 1px dashed rgba(251,247,239,0.35);
+  border-radius: 10px; padding: 0.7rem; margin-bottom: 0.8rem !important; color: var(--orange);
+}
+.newsletter-popup__hint{ font-size: 0.82rem; margin-bottom: 0 !important; }
+
+.newsletter-popup__legal{
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: rgba(251,247,239,0.45); margin-top: 1.2rem; margin-bottom: 0 !important;
+}
+
 /* ============ CART DRAWER ============ */
 .cart-overlay{
   position: fixed; inset:0; background: rgba(23,19,16,0.5);
