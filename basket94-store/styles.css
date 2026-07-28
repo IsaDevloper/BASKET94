@@ -21,6 +21,40 @@
 
 html{ scroll-behavior: smooth; }
 
+/* ============ PRELOADER ============ */
+.preloader{
+  position: fixed; inset: 0; z-index: 999;
+  background: #1E6FFF;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1.8rem;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.preloader.is-hidden{ opacity: 0; visibility: hidden; pointer-events: none; }
+
+.preloader__logo{
+  width: 130px; height: 130px; border-radius: 26px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  animation: preloaderPulse 1.3s ease-in-out infinite;
+}
+@keyframes preloaderPulse{
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.preloader__bar{
+  width: 180px; height: 4px; border-radius: 999px;
+  background: rgba(255,255,255,0.28); overflow: hidden;
+}
+.preloader__fill{
+  height: 100%; width: 0%; border-radius: 999px;
+  background: var(--chalk);
+  transition: width 2.8s linear;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .preloader__logo{ animation: none; }
+}
+
 body{
   font-family: var(--font-body);
   background: var(--chalk);

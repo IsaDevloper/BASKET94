@@ -190,6 +190,26 @@ const CART_KEY = 'basket94_cart';
 const FREE_SHIPPING_THRESHOLD = 1200;
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// ============ PRELOADER ============
+function initPreloader(){
+  const preloader = document.getElementById('preloader');
+  const fill = document.getElementById('preloaderFill');
+  if(!preloader || !fill) return;
+
+  document.body.style.overflow = 'hidden';
+
+  // Kick off the fill animation on the next frame
+  requestAnimationFrame(() => {
+    fill.style.width = '100%';
+  });
+
+  setTimeout(() => {
+    preloader.classList.add('is-hidden');
+    document.body.style.overflow = '';
+    setTimeout(() => { preloader.style.display = 'none'; }, 500);
+  }, 3000);
+}
+
 // ============ HERO SLIDER + PARALLAX ============
 function initHero(){
   const hero = document.getElementById('top');
@@ -372,6 +392,7 @@ function setActiveSize(size){
 
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initHero();
   renderCart();
 
