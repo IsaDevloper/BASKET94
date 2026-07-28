@@ -10,6 +10,9 @@ const PRODUCT_CATALOG = {
   'rodilleras-S':    { name: 'Rodilleras (par) — Talla S',              price: 190 },
   'rodilleras-M':    { name: 'Rodilleras (par) — Talla M',              price: 190 },
   'rodilleras-G':    { name: 'Rodilleras (par) — Talla G',              price: 190 },
+  'combo-cancha-S':  { name: 'Combo Cancha Completa — Rodilleras S',    price: 999 },
+  'combo-cancha-M':  { name: 'Combo Cancha Completa — Rodilleras M',    price: 999 },
+  'combo-cancha-G':  { name: 'Combo Cancha Completa — Rodilleras G',    price: 999 },
 };
 
 const PRODUCT_DETAILS = {
@@ -184,6 +187,7 @@ const SIZE_SPECS = {
 };
 
 const CART_KEY = 'basket94_cart';
+const FREE_SHIPPING_THRESHOLD = 1200;
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ============ HERO SLIDER + PARALLAX ============
@@ -277,6 +281,22 @@ function formatMXN(amount){
   return '$' + amount.toLocaleString('es-MX') + ' MXN';
 }
 
+function updateShippingBar(total){
+  const wrap = document.getElementById('cartShipping');
+  const msg = document.getElementById('cartShippingMsg');
+  const fill = document.getElementById('cartShippingFill');
+  const percent = Math.min(100, (total / FREE_SHIPPING_THRESHOLD) * 100);
+  fill.style.width = percent + '%';
+
+  if(total >= FREE_SHIPPING_THRESHOLD){
+    msg.textContent = '🎉 ¡Ya tienes envío gratis!';
+    wrap.classList.add('is-unlocked');
+  } else {
+    msg.textContent = 'Te faltan ' + formatMXN(FREE_SHIPPING_THRESHOLD - total) + ' para envío gratis';
+    wrap.classList.remove('is-unlocked');
+  }
+}
+
 function renderCart(){
   const cart = getCart();
   const itemsEl = document.getElementById('cartItems');
@@ -291,6 +311,7 @@ function renderCart(){
     itemsEl.appendChild(emptyEl);
     totalEl.textContent = formatMXN(0);
     countEl.textContent = '0';
+    updateShippingBar(0);
     return;
   }
 
@@ -324,6 +345,7 @@ function renderCart(){
 
   totalEl.textContent = formatMXN(total);
   countEl.textContent = String(count);
+  updateShippingBar(total);
 }
 
 // ============ CART DRAWER OPEN/CLOSE ============
@@ -390,6 +412,15 @@ document.addEventListener('DOMContentLoaded', () => {
     rodillerasBtn.addEventListener('click', () => {
       const size = document.getElementById('rodillerasSize').value;
       addToCart('rodilleras-' + size);
+    });
+  }
+
+  // Combo: variant depends on selected rodilleras size
+  const comboBtn = document.getElementById('addCombo');
+  if(comboBtn){
+    comboBtn.addEventListener('click', () => {
+      const size = document.getElementById('comboSize').value;
+      addToCart('combo-cancha-' + size);
     });
   }
 

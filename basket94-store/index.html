@@ -22,7 +22,9 @@
     <nav class="nav__links" id="navLinks">
       <a href="#balones">Balones</a>
       <a href="#accesorios">Accesorios</a>
+      <a href="#combos">Combos</a>
       <a href="#tallas">Guía de tallas</a>
+      <a href="#faq">FAQ</a>
       <a href="#contacto">Contacto</a>
     </nav>
 
@@ -259,6 +261,42 @@
   </div>
 </section>
 
+<!-- ===== COMBOS ===== -->
+<section class="combos" id="combos">
+  <div class="products__head">
+    <p class="section-label">AHORRA MÁS</p>
+    <h2>Combos con descuento</h2>
+  </div>
+
+  <div class="combo-card">
+    <div class="combo-card__media">
+      <img src="images/bg3800.jpg" alt="Combo Cancha Completa: balón, calcetas y rodilleras">
+    </div>
+    <div class="combo-card__body">
+      <h3>Combo Cancha Completa</h3>
+      <ul class="combo-card__list">
+        <li>Balón Molten BG3800 (talla 7)</li>
+        <li>Calcetas NBA Nike Elite</li>
+        <li>Rodilleras (par)</li>
+      </ul>
+      <label class="size-select">
+        Talla de rodilleras
+        <select id="comboSize">
+          <option value="S">S</option>
+          <option value="M" selected>M</option>
+          <option value="G">G</option>
+        </select>
+      </label>
+      <div class="combo-card__price">
+        <span class="price-old">$1,124 MXN</span>
+        <span class="price">$999 MXN</span>
+        <span class="combo-card__save">Ahorras $125</span>
+      </div>
+      <button class="btn btn--primary btn--full" id="addCombo">Agregar combo</button>
+    </div>
+  </div>
+</section>
+
 <!-- ===== GUÍA DE TALLAS ===== -->
 <section class="size-guide" id="tallas">
   <div class="size-guide__head">
@@ -303,6 +341,37 @@
   </div>
 </section>
 
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="products__head">
+    <p class="section-label">DUDAS FRECUENTES</p>
+    <h2>Preguntas frecuentes</h2>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>¿Cuánto tarda el envío?</summary>
+      <p>Cancún y área metropolitana: 1–2 días hábiles. Resto de México: 3–6 días hábiles.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cuánto cuesta el envío?</summary>
+      <p>Envío gratis en compras desde $1,200 MXN. Por debajo de ese monto, la tarifa se calcula según tu código postal al finalizar la compra.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo cambiar o devolver mi producto?</summary>
+      <p>Sí, aceptamos cambios dentro de los 7 días posteriores a la entrega, siempre que el producto no haya sido usado y conserve su empaque original.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cómo elijo la talla correcta de balón?</summary>
+      <p>Talla 7 es la oficial varonil (13 años en adelante). Talla 6 es la oficial femenil y mixta (9–12 años). Revisa la guía de tallas más arriba para el detalle completo.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué métodos de pago aceptan?</summary>
+      <p>Tarjeta de crédito y débito, además de los métodos adicionales que verás disponibles al finalizar tu compra.</p>
+    </details>
+  </div>
+</section>
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer" id="contacto">
   <div class="footer__inner">
@@ -314,7 +383,9 @@
       <h4>Tienda</h4>
       <a href="#balones">Balones</a>
       <a href="#accesorios">Accesorios</a>
+      <a href="#combos">Combos</a>
       <a href="#tallas">Guía de tallas</a>
+      <a href="#faq">FAQ</a>
     </div>
     <div class="footer__col">
       <h4>Contacto</h4>
@@ -375,6 +446,10 @@
   </div>
   <div class="cart-drawer__items" id="cartItems">
     <p class="cart-empty" id="cartEmpty">Aún no has agregado nada. Elige tu balón.</p>
+  </div>
+  <div class="cart-shipping" id="cartShipping">
+    <p class="cart-shipping__msg" id="cartShippingMsg"></p>
+    <div class="cart-shipping__bar"><div class="cart-shipping__fill" id="cartShippingFill"></div></div>
   </div>
   <div class="cart-drawer__foot">
     <div class="cart-total">
