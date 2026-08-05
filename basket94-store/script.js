@@ -2,10 +2,9 @@
 const PRODUCT_CATALOG = {
   'bg5000':          { name: 'Molten BG5000',                          price: 735 },
   'bg3800':          { name: 'Molten BG3800',                          price: 735 },
-  'bg4000':          { name: 'Molten BG4000',                          price: 735 },
+  'bg3800-5':          { name: 'Molten BG3800 - Talla 5',                          price: 1255 },
   'gg6x':            { name: 'Molten GG6X — Talla 6',                  price: 785 },
-  'bg3800-mundial':  { name: 'Molten BG3800 — Edición Mundial 2023',   price: 785 },
-  'bg5000-mundial':  { name: 'Molten BG5000 — Edición Mundial 2019',   price: 785 },
+  'D3500':  { name: 'Molten D3500 OUTDOOR',   price: 1250 },
   'calcetas':        { name: 'Calcetas NBA Nike Elite',                 price: 199 },
   'rodilleras-S':    { name: 'Rodilleras (par) — Talla S',              price: 190 },
   'rodilleras-M':    { name: 'Rodilleras (par) — Talla M',              price: 190 },
@@ -16,78 +15,55 @@ const PRODUCT_CATALOG = {
 };
 
 const PRODUCT_DETAILS = {
-  'bg5000': {
-    badge: '#7',
-    tagline: 'COMPETENCIA · FIBA APPROVED',
-    images: ['images/bg5000.jpg'],
-    description: 'Balón de competencia con cuero sintético composite premium. Pensado para entrenamientos exigentes y juego serio, con el agarre parejo que se siente de inmediato al primer bote.',
-    specs: [
-      ['Talla', '7 (varonil)'],
-      ['Circunferencia', '749–780 mm'],
-      ['Peso', '567–650 g'],
-      ['Material', 'Cuero sintético premium composite'],
-    ],
-  },
+
   'bg3800': {
     badge: '#7',
     tagline: 'ENTRENAMIENTO · FIBA APPROVED',
-    images: ['images/bg3800.jpg', 'images/bg3800-2.jpg'],
+    images: ['images/bg3800.jpg', 'images/3800-3.jpeg'],
     description: 'Balón oficial FIBA con aprobación Nivel 1 vigente 2024–2028. Cuero premium para uso diario en cancha, con la durabilidad que pide el entrenamiento constante.',
     specs: [
       ['Talla', '7 (varonil)'],
       ['Aprobación FIBA', 'Nivel 1, vigente 2024–2028'],
-      ['Circunferencia', '749–780 mm'],
+      ['Circunferencia', '74.9–78.0 cm'],
       ['Peso', '567–650 g'],
     ],
   },
-  'bg4000': {
-    badge: '#7',
+  'bg3800-5': {
+    badge: '#5',
     tagline: 'COMPETENCIA · FIBA APPROVED',
-    images: ['images/bg4000.jpg', 'images/bg4000-2.jpg'],
-    description: 'Balón de la línea Competition premium composite de Molten, aprobado por FIBA. Buen punto medio entre agarre y durabilidad para quienes juegan varias veces por semana.',
+    images: ['images/bg3800-5.JPEG', 'images/bg3800-52.JPEG'],
+    description: 'Está pensado especialmente para niños que están comenzando o desarrollando sus habilidades en el básquetbol. Su tamaño #5 facilita el manejo, el bote y el control del balón, permitiendo que los pequeños jugadores puedan desarrollar su técnica con mayor confianza.',
     specs: [
-      ['Talla', '7 (varonil)'],
-      ['Circunferencia', '749–780 mm'],
-      ['Peso', '567–650 g'],
+      ['Talla', '5 (categorías infantiles o minibasket)'],
+      ['Circunferencia', '68.5 cm – 71 cm'],
+      ['Peso', '454 g – 510 g'],
       ['Material', 'Cuero sintético premium composite'],
     ],
   },
   'gg6x': {
     badge: '#6',
     tagline: 'FEMENIL · FIBA APPROVED CATEGORY 6',
-    images: ['images/gg6x.jpg'],
+    images: ['images/gg6x 1.JPEG', 'images/gg6x 2.JPEG','images/gg6x 3.JPEG'],
     description: 'Balón oficial femenil de Molten, talla 6, con aprobación FIBA vigente. La opción correcta para ligas femeniles y para jugadores mixtos de 9 a 12 años que ya juegan en talla estándar reducida.',
     specs: [
       ['Talla', '6 (femenil / mixto)'],
-      ['Circunferencia', '724–737 mm'],
+      ['Circunferencia', '72.4–73.7 cm'],
       ['Peso', '510–567 g'],
       ['Categoría FIBA', 'Category 6'],
     ],
   },
-  'bg3800-mundial': {
+  'D3500': {
     badge: '#7',
-    tagline: 'EDICIÓN MUNDIAL 2023',
-    images: ['images/bg3800-mundial.jpg'],
-    description: 'Edición conmemorativa de la Copa Mundial FIBA 2023 (Filipinas · Japón · Indonesia), sobre la base BG3800. Pieza ideal tanto para jugar como para coleccionar.',
+    tagline: 'Especial para concreto',
+    images: ['images/D3500.JPEG', 'images/d3500 3.JPEG', 'images/d3500-4.JPEG', 'images/d3500-5.JPEG'],
+    description: 'Su construcción de piel sintética de alta resistencia está pensada para soportar el uso frecuente en superficies como concreto y duela, mientras que su textura proporciona un agarre firme incluso cuando las condiciones son húmedas.',
     specs: [
       ['Talla', '7 (varonil)'],
-      ['Edición', 'FIBA Basketball World Cup 2023'],
-      ['Circunferencia', '749–780 mm'],
+      ['Circunferencia', '74.9–78.0 cm'],
       ['Peso', '567–650 g'],
     ],
   },
-  'bg5000-mundial': {
-    badge: '#7',
-    tagline: 'EDICIÓN MUNDIAL 2019',
-    images: ['images/bg5000-mundial.jpg', 'images/bg5000-mundial-2.jpg'],
-    description: 'Balón oficial de juego de la Copa Mundial FIBA China 2019, con los grabados conmemorativos del torneo. Edición coleccionable sobre la base BG5000.',
-    specs: [
-      ['Talla', '7 (varonil)'],
-      ['Edición', 'FIBA Basketball World Cup China 2019'],
-      ['Material', 'Cuero premium (Premium Leather)'],
-      ['Peso', '567–650 g'],
-    ],
-  },
+
   'calcetas': {
     badge: '',
     tagline: 'NIKE ELITE · NBA',
@@ -115,7 +91,19 @@ const PRODUCT_DETAILS = {
     hasSize: true,
   },
 };
+// ============ WHATSAPP BUBBLE ============
+function initWhatsappBubble(){
+  const bubble = document.getElementById('whatsappBubble');
+  if(!bubble) return;
 
+  function show(){
+    bubble.classList.add('is-visible');
+    setTimeout(() => bubble.classList.remove('is-visible'), 4000);
+  }
+
+  setTimeout(show, 4000);       // primera aparición
+  setInterval(show, 10000);     // se repite cada 10s
+}
 // ============ PRODUCT MODAL ============
 let currentModalId = null;
 
@@ -182,8 +170,9 @@ function closeProductModal(){
 }
 
 const SIZE_SPECS = {
-  '7': { circ: '749–780 mm', peso: '567–650 g', uso: 'Varonil, cancha completa, 13+ años' },
-  '6': { circ: '724–737 mm', peso: '510–567 g', uso: 'Femenil / mixto, 9–12 años' },
+  '5': { circ: '68.5–71.0 cm', peso: '470–500 g', uso: 'Infantil / iniciación, 6–9 años' },
+  '7': { circ: '74.9–78.0 cm', peso: '567–650 g', uso: 'Varonil, cancha completa, 13+ años' },
+  '6': { circ: '72.4–73.7 cm', peso: '510–567 g', uso: 'Femenil / mixto, 9–12 años' },
 };
 
 const CART_KEY = 'basket94_cart';
@@ -449,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewsletterPopup();
   initHero();
   renderCart();
+  initWhatsappBubble();
 
   // Add to cart buttons (products with fixed id)
   document.querySelectorAll('[data-add]').forEach(btn => {
