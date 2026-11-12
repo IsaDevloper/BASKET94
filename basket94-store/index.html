@@ -3,56 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BASKET 94 — Balones Molten y accesorios de básquetbol</title>
+<title>BASKET 94 — Balones de basquetbol en Quintana Roo</title>
+<meta name="description" content="Balones de basquetbol Molten y Spalding disponibles en Quintana Roo. Haz tu pedido por WhatsApp y recibe en Cancún, Playa del Carmen o Puerto Morelos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="stylesheet" href="styles.css">
-</head>
 
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5S6G8Z9J');</script>
+<!-- End Google Tag Manager -->
 
-<!-- Google tag (gtag.js)
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLVRQYCWC1"></script> 
- <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-BLVRQYCWC1'); </script>--> 
+<!-- Google tag (gtag.js) — desactivado
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLVRQYCWC1"></script>
+ <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-BLVRQYCWC1'); </script>
+-->
+</head>
 <body>
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5S6G8Z9J"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
 <!-- ===== PRELOADER ===== -->
 <div class="preloader" id="preloader">
-  <img src="images/logo.png" alt="BASKET 94" class="preloader__logo">
+  <img src="images/logo.png" alt="BASKET 94" class="preloader__logo" width="130" height="130">
   <div class="preloader__bar"><div class="preloader__fill" id="preloaderFill"></div></div>
 </div>
 
 <!-- ===== NAV ===== -->
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a href="#top" class="nav__logo">
-      <img src="images/logo.png" alt="BASKET 94" class="nav__logo-img">
+    <a href="#top" class="nav__logo" aria-label="BASKET 94, ir al inicio">
+      <img src="images/logo.png" alt="BASKET 94" class="nav__logo-img" width="42" height="42">
     </a>
 
-    <nav class="nav__links" id="navLinks">
-      <a href="#balones">Balones</a>
-      <a href="#accesorios">Accesorios</a>
-      <a href="#combos">Combos</a>
-      <a href="#tallas">Guía de tallas</a>
-      <a href="#faq">FAQ</a>
+    <nav class="nav__links" id="navLinks" aria-label="Principal">
+      <a href="#faq">Dudas Frecuentes</a>
+      <a href="#balones">Balones Disponibles</a>
+      <a href="#tallas">Guía de Número de Balón</a>
       <a href="#contacto">Contacto</a>
     </nav>
 
     <div class="nav__actions">
       <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3h2l2.4 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.6L21 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20.5" r="1.4" fill="currentColor"/><circle cx="17.5" cy="20.5" r="1.4" fill="currentColor"/></svg>
-        <span class="cart-btn__count" id="cartCount">0</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3h2l2.4 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.6L21 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20.5" r="1.4" fill="currentColor"/><circle cx="17.5" cy="20.5" r="1.4" fill="currentColor"/></svg>
+        <span class="cart-btn__count" id="cartCount" hidden>0</span>
       </button>
-      <button class="nav__burger" id="burgerBtn" aria-label="Abrir menú">
+      <button class="nav__burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -62,24 +66,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
   <div class="hero__slider" id="heroSlider">
-    <div class="hero__slide is-active" style="background-image:url('images/hero-pasto-1.jpg')"></div>
-    <div class="hero__slide" style="background-image:url('images/hero-pasto-2.jpg')"></div>
-    <div class="hero__slide" style="background-image:url('images/hero-pasto-3.jpg')"></div>
+    <div class="hero__slide is-active" style="background-image:url('images/hero-1.jpg')"></div>
+    <div class="hero__slide" style="background-image:url('images/hero-2.jpg')"></div>
+    <div class="hero__slide" style="background-image:url('images/hero-3.jpg')"></div>
   </div>
   <div class="hero__overlay"></div>
   <div class="hero__seams" aria-hidden="true"></div>
 
-  <div class="hero__content">
-    <p class="eyebrow">CUERO OFICIAL · GRIP FIBA</p>
-    <h1 class="hero__title">TU JUEGO<br>PESA LO QUE<br>PESA TU <em>BALÓN</em></h1>
-    <p class="hero__sub">Balones Molten oficiales y accesorios de cancha. De la BG3800 a la edición Mundial, directo a tu entrenamiento.</p>
-    <div class="hero__cta">
-      <button class="btn btn--primary" data-scroll="#balones">Ver balones</button>
-      <button class="btn btn--ghost" data-scroll="#tallas">Guía de tallas</button>
+  <div class="hero__inner">
+    <div class="hero__content">
+      <h1 class="hero__title">Menos tiempo esperando. <em>Más tiempo jugando.</em></h1>
+      <p class="hero__sub">Balones de basquetbol disponibles en Quintana Roo. Haz tu pedido por WhatsApp y comparte tu ubicación para coordinar una entrega rápida.</p>
+      <div class="hero__cta">
+        <button class="btn btn--primary btn--lg" data-scroll="#balones">Ver balones disponibles</button>
+      </div>
+    </div>
+
+    <div class="hero__phone">
+      <div class="phone" role="img" aria-label="Ejemplo de pedido por WhatsApp: se consulta el balón, se comparte la ubicación y se confirma la entrega">
+        <span class="phone__btn phone__btn--silent" aria-hidden="true"></span>
+        <span class="phone__btn phone__btn--vol-up" aria-hidden="true"></span>
+        <span class="phone__btn phone__btn--vol-down" aria-hidden="true"></span>
+        <span class="phone__btn phone__btn--power" aria-hidden="true"></span>
+        <div class="phone__screen">
+          <div class="phone__status" aria-hidden="true">
+            <span class="phone__time">9:41</span>
+            <span class="phone__island"></span>
+            <svg class="phone__icons" viewBox="0 0 66 12" width="52" height="10" fill="#111"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2.5" width="3" height="9.5" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/><path d="M26 4.2a9 9 0 0113 0l-1.6 1.7a6.6 6.6 0 00-9.8 0zM29 7.6a4.8 4.8 0 016.6 0l-1.5 1.7a2.6 2.6 0 00-3.6 0zM31.3 10.6a1.4 1.4 0 012.2 0l-1.1 1.2z"/><rect x="43" y="0.5" width="19" height="11" rx="3" fill="none" stroke="#111" stroke-opacity=".5"/><rect x="45" y="2.5" width="14" height="7" rx="1.6"/><rect x="63" y="4" width="1.4" height="4" rx=".7" opacity=".5"/></svg>
+          </div>
+          <video class="phone__video" id="heroVideo" src="images/hero-whatsapp.mp4" poster="images/hero-whatsapp-poster.jpg" autoplay muted loop playsinline preload="auto" width="1080" height="1920" disablepictureinpicture></video>
+          <div class="phone__home" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <span class="hero__ball-tag">#7 / #6</span>
 
   <div class="hero__dots" id="heroDots">
     <button class="is-active" data-slide="0" aria-label="Foto 1"></button>
@@ -88,215 +108,82 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ===== SELECTOR DE TALLA ===== -->
-<section class="fit-picker">
-  <div class="fit-picker__inner">
-    <p class="section-label">¿QUÉ TALLA JUEGAS?</p>
-    <div class="fit-tabs" id="fitTabs">
-      <button class="fit-tab is-active" data-size="7">
-        <span class="fit-tab__num">7</span>
-        <span class="fit-tab__desc">Varonil · profesional / 13+ años</span>
-      </button>
-      <button class="fit-tab" data-size="6">
-        <span class="fit-tab__num">6</span>
-        <span class="fit-tab__desc">Femenil · profesional / mixto 9–12</span>
-      </button>
-      <button class="fit-tab" data-size="5">
-  <span class="fit-tab__num">5</span>
-  <span class="fit-tab__desc">Infantil · iniciación 6–9 años</span>
-</button>
-    </div>
-    <div class="fit-spec" id="fitSpec">
-      <div class="fit-spec__row"><span>Circunferencia</span><strong id="specCirc">74.9–78.0 cm</strong></div>
-      <div class="fit-spec__row"><span>Peso</span><strong id="specPeso">567–650 g</strong></div>
-      <div class="fit-spec__row"><span>Uso recomendado</span><strong id="specUso">Liga varonil, cancha completa</strong></div>
-    </div>
+<!-- ===== DUDAS FRECUENTES ===== -->
+<section class="faq" id="faq">
+  <div class="products__head">
+    <p class="section-label">ANTES DE PEDIR</p>
+    <h2>Dudas frecuentes</h2>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>¿Los balones son originales?</summary>
+      <p>Sí. Todos los balones que comercializamos son productos oficiales y originales.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cuándo pago mi pedido?</summary>
+      <p>El pago se realiza al momento de la entrega. Puedes pagar en efectivo o mediante transferencia bancaria.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cuánto cuesta el envío?</summary>
+      <p>Las entregas en Cancún son gratuitas. Para Puerto Morelos y Playa del Carmen, el costo de envío es de $100 MXN.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Tienen entrega el mismo día?</summary>
+      <p>Sí, en muchos casos podemos realizar entregas el mismo día en Cancún, sujeto a disponibilidad y horario.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo cambiar o devolver mi producto?</summary>
+      <p>Sí. Aceptamos cambios dentro de los 7 días posteriores a la entrega en caso de que el producto presente algún defecto de fabricación.</p>
+    </details>
   </div>
 </section>
 
-<!-- ===== TIRA DE CALIDAD ===== -->
-<section class="quality-strip">
-  <img src="images/detalle-cuero.jpg" alt="Detalle del cuero y costuras del balón Molten">
-  <div class="quality-strip__caption">
-    <p class="section-label">FICHA DE MATERIAL</p>
-    <p>Cuero sintético premium y costuras profundas: el mismo agarre que sientes en cancha profesional.</p>
+<!-- ===== FICHA DE MATERIALES ===== -->
+<section class="materials" id="materiales">
+  <img src="images/detalle-cuero.jpg" alt="Detalle del cuero y las costuras de un balón Molten" loading="lazy">
+  <div class="materials__overlay"></div>
+  <div class="materials__inner">
+    <p class="section-label">LO QUE HAY DETRÁS DE CADA BOTE</p>
+    <h2 class="materials__title">Ficha de materiales</h2>
+    <dl class="materials__list">
+      <div>
+        <dt>Material</dt>
+        <dd>Piel sintética de alta resistencia.</dd>
+      </div>
+      <div>
+        <dt>Superficies recomendadas</dt>
+        <dd>Ideal para canchas de cemento y duela.</dd>
+      </div>
+      <div>
+        <dt>Beneficios</dt>
+        <dd>Excelente agarre, durabilidad y control durante el juego.</dd>
+      </div>
+    </dl>
   </div>
 </section>
 
-<!-- ===== BALONES ===== -->
+<!-- ===== BALONES DISPONIBLES ===== -->
 <section class="products" id="balones">
   <div class="products__head">
-    <p class="section-label">LA LÍNEA</p>
-    <h2>Balones Molten</h2>
+    <p class="section-label">CATÁLOGO</p>
+    <h2>Balones disponibles</h2>
   </div>
 
-  <div class="product-grid">
-
-
-
-    <article class="product-card" data-detail="bg3800">
-      <div class="product-card__media">
-        <img src="images/bg3800.jpg" alt="Balón Molten BG3800">
-        <span class="product-card__badge">#7</span>
-      </div>
-      <div class="product-card__body">
-        <h3>Molten BG3800</h3>
-        <p class="product-card__meta">Balón oficial FIBA · entrenamiento</p>
-        <button class="product-card__viewlink" data-detail="bg3800">Ver detalle →</button>
-        <div class="product-card__foot">
-          <span class="price">$735 MXN</span>
-          <button class="btn btn--small btn--primary" data-add="bg3800">Agregar</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card" data-detail="bg3800-5">
-      <div class="product-card__media">
-        <img src="images/bg3800-5.JPEG" alt="Balón Molten BG4000">
-        <span class="product-card__badge">#5</span>
-      </div>
-      <div class="product-card__body">
-        <h3>Molten BG3800 #5</h3>
-        <p class="product-card__meta">Balón oficial FIBA · competencia</p>
-        <button class="product-card__viewlink" data-detail="bg3800-5">Ver detalle →</button>
-        <div class="product-card__foot">
-          <span class="price">$1,255 MXN</span>
-          <button class="btn btn--small btn--primary" data-add="bg3800-5">Agregar</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card" data-detail="gg6x">
-      <div class="product-card__media">
-        <img src="images/gg6x 1.JPEG" alt="Balón Molten GG6X talla 6">
-        <span class="product-card__badge">#6</span>
-      </div>
-      <div class="product-card__body">
-        <h3>Molten GG6X</h3>
-        <p class="product-card__meta">Balón oficial femenil FIBA · talla 6</p>
-        <button class="product-card__viewlink" data-detail="gg6x">Ver detalle →</button>
-        <div class="product-card__foot">
-          <span class="price">$785 MXN</span>
-          <button class="btn btn--small btn--primary" data-add="gg6x">Agregar</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card" data-detail="D3500">
-      <div class="product-card__media">
-        <img src="images/d3500.JPEG" alt="Balón Molten BG3800 edición Mundial 2023">
-        <span class="product-card__badge">#7</span>
-      </div>
-      <div class="product-card__body">
-        <h3>Molten D3500 OUTDOOR</h3>
-        <p class="product-card__meta">Filipinas · Japón · Indonesia</p>
-        <button class="product-card__viewlink" data-detail="D3500">Ver detalle →</button>
-        <div class="product-card__foot">
-          <span class="price">$1,250 MXN</span>
-          <button class="btn btn--small btn--primary" data-add="D3500">Agregar</button>
-        </div>
-      </div>
-    </article>
-
-
-
+  <!-- Las tarjetas se generan desde la lista PRODUCTS de script.js -->
+  <div class="product-grid" id="productGrid">
+    <noscript>
+      <p>Activa JavaScript para ver el catálogo o escríbenos por
+      <a href="https://wa.me/529987625469" target="_blank" rel="noopener">WhatsApp</a>.</p>
+    </noscript>
   </div>
 </section>
 
-<!-- ===== ACCESORIOS ===== -->
-<section class="products products--dark" id="accesorios">
-  <div class="products__head">
-    <p class="section-label">EL COMPLEMENTO</p>
-    <h2>Accesorios de cancha</h2>
-  </div>
-
-  <div class="product-grid product-grid--accessories">
-
-    <article class="product-card product-card--acc" data-detail="calcetas">
-      <div class="product-card__media">
-        <img src="images/calcetas.jpg" alt="Calcetas NBA Nike Elite">
-      </div>
-      <div class="product-card__body">
-        <h3>Calcetas NBA Nike Elite</h3>
-        <p class="product-card__meta">Blancas o negras · cushion de alto rendimiento</p>
-        <button class="product-card__viewlink" data-detail="calcetas">Ver detalle →</button>
-        <div class="product-card__foot">
-          <span class="price-group">
-            <span class="price">$199 MXN</span>
-            <span class="price-old">$250 MXN</span>
-          </span>
-          <button class="btn btn--small btn--primary" data-add="calcetas">Agregar</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card product-card--acc" data-detail="rodilleras">
-      <div class="product-card__media">
-        <img src="images/rodilleras.jpg" alt="Rodilleras de básquetbol">
-      </div>
-      <div class="product-card__body">
-        <h3>Rodilleras (par)</h3>
-        <p class="product-card__meta">Protección con panel acolchado</p>
-        <button class="product-card__viewlink" data-detail="rodilleras">Ver detalle →</button>
-        <label class="size-select">
-          Talla
-          <select id="rodillerasSize">
-            <option value="S">S</option>
-            <option value="M" selected>M</option>
-            <option value="G">G</option>
-          </select>
-        </label>
-        <div class="product-card__foot">
-          <span class="price">$190 MXN</span>
-          <button class="btn btn--small btn--primary" id="addRodilleras">Agregar</button>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-<!--
- ===== COMBOS ===== 
-<section class="combos" id="combos">
-  <div class="products__head">
-    <p class="section-label">AHORRA MÁS</p>
-    <h2>Combos con descuento</h2>
-  </div>
-
-  <div class="combo-card">
-    <div class="combo-card__media">
-      <img src="images/bg3800.jpg" alt="Combo Cancha Completa: balón, calcetas y rodilleras">
-    </div>
-    <div class="combo-card__body">
-      <h3>Combo Cancha Completa</h3>
-      <ul class="combo-card__list">
-        <li>Balón Molten BG3800 (talla 7)</li>
-        <li>Calcetas NBA Nike Elite</li>
-        <li>Rodilleras (par)</li>
-      </ul>
-      <label class="size-select">
-        Talla de rodilleras
-        <select id="comboSize">
-          <option value="S">S</option>
-          <option value="M" selected>M</option>
-          <option value="G">G</option>
-        </select>
-      </label>
-      <div class="combo-card__price">
-        <span class="price-old">$1,124 MXN</span>
-        <span class="price">$999 MXN</span>
-        <span class="combo-card__save">Ahorras $125</span>
-      </div>
-      <button class="btn btn--primary btn--full" id="addCombo">Agregar combo</button>
-    </div>
-  </div>
-</section>
--->
-<!-- ===== GUÍA DE TALLAS ===== -->
+<!-- ===== GUÍA DE NÚMERO DE BALÓN ===== -->
 <section class="size-guide" id="tallas">
   <div class="size-guide__head">
     <p class="section-label">FICHA TÉCNICA</p>
-    <h2>Guía oficial de tallas</h2>
+    <h2>Guía de número de balón</h2>
     <p class="size-guide__sub">Especificaciones según norma FIBA para balones de básquetbol.</p>
   </div>
 
@@ -304,7 +191,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <table class="size-table">
       <thead>
         <tr>
-          <th>Talla</th>
+          <th>Número</th>
           <th>Circunferencia</th>
           <th>Peso</th>
           <th>Edad / categoría</th>
@@ -324,11 +211,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <td>Femenil / mixto, 9–12 años</td>
         </tr>
         <tr>
-  <td class="size-table__num">5</td>
-  <td>685–710 mm</td>
-  <td>470–500 g</td>
-  <td>Infantil / iniciación, 6–9 años</td>
-</tr>
+          <td class="size-table__num">5</td>
+          <td>685–710 mm</td>
+          <td>470–500 g</td>
+          <td>Infantil / iniciación, 6–9 años</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -336,40 +223,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== CATÁLOGO COMPLETO (banner) ===== -->
 <section class="catalog-banner">
-  <img src="images/catalogo-completo.jpg" alt="Catálogo completo de balones Molten BASKET 94">
+  <img src="images/catalogo-completo.jpg" alt="Catálogo completo de balones BASKET 94" loading="lazy">
   <div class="catalog-banner__caption">
     <p>Todo el catálogo, en una sola cancha.</p>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="faq" id="faq">
-  <div class="products__head">
-    <p class="section-label">DUDAS FRECUENTES</p>
-    <h2>Preguntas frecuentes</h2>
-  </div>
-
-  <div class="faq-list">
-    <details class="faq-item">
-      <summary>¿Cuánto tarda el envío?</summary>
-      <p>Cancún y área metropolitana: 1–2 días hábiles. Resto de México: 3–6 días hábiles.</p>
-    </details>
-    <details class="faq-item">
-      <summary>¿Cuánto cuesta el envío?</summary>
-      <p>Envío gratis en compras desde $1,200 MXN. Por debajo de ese monto, la tarifa se calcula según tu código postal al finalizar la compra.</p>
-    </details>
-    <details class="faq-item">
-      <summary>¿Puedo cambiar o devolver mi producto?</summary>
-      <p>Sí, aceptamos cambios dentro de los 7 días posteriores a la entrega, siempre que el producto no haya sido usado y conserve su empaque original.</p>
-    </details>
-    <details class="faq-item">
-      <summary>¿Cómo elijo la talla correcta de balón?</summary>
-      <p>Talla 7 es la oficial varonil (13 años en adelante). Talla 6 es la oficial femenil y mixta (9–12 años). Revisa la guía de tallas más arriba para el detalle completo.</p>
-    </details>
-    <details class="faq-item">
-      <summary>¿Qué métodos de pago aceptan?</summary>
-      <p>Tarjeta de crédito y débito, además de los métodos adicionales que verás disponibles al finalizar tu compra.</p>
-    </details>
   </div>
 </section>
 
@@ -377,35 +233,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer" id="contacto">
   <div class="footer__inner">
     <div class="footer__brand">
-      <img src="images/logo.png" alt="BASKET 94" class="footer__logo-img">
-      <p>Balones y accesorios de básquetbol. Envíos a todo México.</p>
+      <img src="images/logo.png" alt="BASKET 94" class="footer__logo-img" width="72" height="72" loading="lazy">
+      <p>Entregas en Cancún, Playa del Carmen y Puerto Morelos.</p>
     </div>
     <div class="footer__col">
       <h4>Tienda</h4>
-      <a href="#balones">Balones</a>
-      <a href="#accesorios">Accesorios</a>
-      <a href="#combos">Combos</a>
-      <a href="#tallas">Guía de tallas</a>
-      <a href="#faq">FAQ</a>
+      <a href="#faq">Dudas Frecuentes</a>
+      <a href="#balones">Balones Disponibles</a>
+      <a href="#tallas">Guía de Número de Balón</a>
+      <a href="#contacto">Contacto</a>
     </div>
     <div class="footer__col">
       <h4>Contacto</h4>
-      <a href="https://wa.me/529981093595" target="_blank" rel="noopener">WhatsApp: 998 109 3595</a>
+      <a href="https://wa.me/529987625469" target="_blank" rel="noopener">WhatsApp: +52 998 762 5469</a>
       <span>Cancún, Q.Roo, México</span>
     </div>
   </div>
-  <p class="footer__legal">© 2026 BASKET 94. Balones de la marca Molten mencionados con fines ilustrativos.</p>
+  <p class="footer__legal">© 2026 BASKET 94. Molten y Spalding son marcas de sus respectivos propietarios.</p>
 </footer>
 
 <!-- ===== BOTÓN WHATSAPP ===== -->
 <div class="whatsapp-bubble" id="whatsappBubble">HAZ MÁS RÁPIDO TU PEDIDO <span>→</span></div>
 <a class="whatsapp-btn" href="https://wa.me/529987625469?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20balones" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
-  <svg width="36" height="36" viewBox="0 0 32 32" fill="none"><path d="M16 3C9 3 3.3 8.6 3.3 15.5c0 2.5.7 4.8 2 6.8L3 29l6.9-2.2c1.9 1 4.1 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.5S23 3 16 3z" fill="#25D366"/><path d="M12.2 10.5c-.3-.6-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.2-1.3 2.9s1.3 3.4 1.5 3.6c.2.3 2.5 4 6.2 5.4 3.1 1.2 3.7 1 4.4.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5-.3-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.3.4-.9 1.2-1.1 1.4-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.4-.2-.3 0-.5.1-.7.2-.2.3-.4.5-.6.1-.2.2-.4.3-.6.1-.2 0-.4 0-.6 0-.2-.7-1.9-1-2.5z" fill="white"/></svg>
+  <svg width="36" height="36" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3C9 3 3.3 8.6 3.3 15.5c0 2.5.7 4.8 2 6.8L3 29l6.9-2.2c1.9 1 4.1 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.5S23 3 16 3z" fill="#25D366"/><path d="M12.2 10.5c-.3-.6-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.2-1.3 2.9s1.3 3.4 1.5 3.6c.2.3 2.5 4 6.2 5.4 3.1 1.2 3.7 1 4.4.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5-.3-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.3.4-.9 1.2-1.1 1.4-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.4-.2-.3 0-.5.1-.7.2-.2.3-.4.5-.6.1-.2.2-.4.3-.6.1-.2 0-.4 0-.6 0-.2-.7-1.9-1-2.5z" fill="white"/></svg>
 </a>
 
-<!-- ===== MODAL DE DETALLE DE PRODUCTO ===== -->
+<!-- ===== MODAL: CARACTERÍSTICAS DEL BALÓN ===== -->
 <div class="product-modal-overlay" id="productModalOverlay"></div>
-<div class="product-modal" id="productModal" role="dialog" aria-modal="true">
+<div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
   <button class="product-modal__close" id="productModalClose" aria-label="Cerrar">&times;</button>
   <div class="product-modal__body">
     <div class="product-modal__gallery">
@@ -418,22 +273,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="product-modal__info">
       <p class="section-label" id="pmTagline"></p>
       <h2 id="pmTitle"></h2>
+      <p class="product-modal__sizechip"><b id="pmSizeNum"></b><span id="pmSizeText"></span></p>
       <div class="product-modal__price">
         <span class="price" id="pmPrice"></span>
-        <span class="price-old" id="pmPriceOld"></span>
       </div>
       <p class="product-modal__desc" id="pmDesc"></p>
       <div class="product-modal__specs" id="pmSpecs"></div>
-      <div class="product-modal__size" id="pmSizeWrap">
-        <label class="size-select">
-          Talla
-          <select id="pmSize">
-            <option value="S">S</option>
-            <option value="M" selected>M</option>
-            <option value="G">G</option>
-          </select>
-        </label>
-      </div>
       <button class="btn btn--primary btn--full" id="pmAddBtn">Agregar al carrito</button>
     </div>
   </div>
@@ -462,26 +307,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="newsletter-popup__legal">Sin spam. Puedes darte de baja cuando quieras.</p>
 </div>
 
-<!-- ===== CARRITO ===== -->
+<!-- ===== CARRITO / PEDIDO POR WHATSAPP ===== -->
 <div class="cart-overlay" id="cartOverlay"></div>
-<aside class="cart-drawer" id="cartDrawer">
+<aside class="cart-drawer" id="cartDrawer" aria-label="Tu pedido">
   <div class="cart-drawer__head">
-    <h3>Tu carrito</h3>
+    <h3>Tu pedido</h3>
     <button id="cartClose" aria-label="Cerrar carrito">&times;</button>
   </div>
-  <div class="cart-drawer__items" id="cartItems">
-    <p class="cart-empty" id="cartEmpty">Aún no has agregado nada. Elige tu balón.</p>
+
+  <div class="cart-drawer__scroll">
+    <!-- Paso 1: balones -->
+    <section class="cart-step">
+      <p class="cart-step__label"><span>1</span> Tus balones</p>
+      <div class="cart-items" id="cartItems"></div>
+    </section>
+
+    <!-- Paso 2: ciudad (opciones visuales, sin formularios) -->
+    <section class="cart-step" id="cityStep" hidden>
+      <p class="cart-step__label"><span>2</span> ¿Dónde te lo entregamos?</p>
+      <div class="city-options" id="cityOptions" role="radiogroup" aria-label="Ciudad de entrega"></div>
+      <p class="city-note" id="cityNote"></p>
+    </section>
+
+    <!-- Paso 3: resumen -->
+    <section class="cart-step" id="summaryStep" hidden>
+      <p class="cart-step__label"><span>3</span> Resumen de tu pedido</p>
+      <dl class="cart-summary">
+        <div><dt>Subtotal</dt><dd id="sumSubtotal">$0 MXN</dd></div>
+        <div id="sumShippingRow"><dt>Envío</dt><dd id="sumShipping">—</dd></div>
+        <div class="is-total"><dt id="sumTotalLabel">Total</dt><dd id="sumTotal">$0 MXN</dd></div>
+      </dl>
+    </section>
   </div>
-  <div class="cart-shipping" id="cartShipping">
-    <p class="cart-shipping__msg" id="cartShippingMsg"></p>
-    <div class="cart-shipping__bar"><div class="cart-shipping__fill" id="cartShippingFill"></div></div>
-  </div>
+
   <div class="cart-drawer__foot">
-    <div class="cart-total">
-      <span>Total</span>
-      <strong id="cartTotal">$0 MXN</strong>
-    </div>
-    <button class="btn btn--primary btn--full" id="checkoutBtn">Ir a pagar</button>
+    <a class="btn btn--whatsapp btn--full is-disabled" id="waCheckout" role="button" aria-disabled="true" tabindex="-1">
+      <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9 3 3.3 8.6 3.3 15.5c0 2.5.7 4.8 2 6.8L3 29l6.9-2.2c1.9 1 4.1 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.5S23 3 16 3z" fill="currentColor"/><path d="M12.2 10.5c-.3-.6-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.2-1.3 2.9s1.3 3.4 1.5 3.6c.2.3 2.5 4 6.2 5.4 3.1 1.2 3.7 1 4.4.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5-.3-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.3.4-.9 1.2-1.1 1.4-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.4-.2-.3 0-.5.1-.7.2-.2.3-.4.5-.6.1-.2.2-.4.3-.6.1-.2 0-.4 0-.6 0-.2-.7-1.9-1-2.5z" fill="#25D366" class="wa-hand"/></svg>
+      <span id="waCheckoutLabel">Pedir por WhatsApp</span>
+    </a>
+    <p class="cart-hint" id="cartHint">Agrega al menos un balón para continuar.</p>
   </div>
 </aside>
 

@@ -1,154 +1,165 @@
-// ============ DATA ============
-const PRODUCT_CATALOG = {
-  'bg5000':          { name: 'Molten BG5000',                          price: 735 },
-  'bg3800':          { name: 'Molten BG3800',                          price: 735 },
-  'bg3800-5':          { name: 'Molten BG3800 - Talla 5',                          price: 1255 },
-  'gg6x':            { name: 'Molten GG6X — Talla 6',                  price: 785 },
-  'D3500':  { name: 'Molten D3500 OUTDOOR',   price: 1250 },
-  'calcetas':        { name: 'Calcetas NBA Nike Elite',                 price: 199 },
-  'rodilleras-S':    { name: 'Rodilleras (par) — Talla S',              price: 190 },
-  'rodilleras-M':    { name: 'Rodilleras (par) — Talla M',              price: 190 },
-  'rodilleras-G':    { name: 'Rodilleras (par) — Talla G',              price: 190 },
-  'combo-cancha-S':  { name: 'Combo Cancha Completa — Rodilleras S',    price: 999 },
-  'combo-cancha-M':  { name: 'Combo Cancha Completa — Rodilleras M',    price: 999 },
-  'combo-cancha-G':  { name: 'Combo Cancha Completa — Rodilleras G',    price: 999 },
+/* =====================================================================
+   BASKET 94 — script.js
+   ---------------------------------------------------------------------
+   PARA AGREGAR / QUITAR / EDITAR UN BALÓN: solo modifica la lista
+   PRODUCTS de más abajo. Las tarjetas, el modal de características y el
+   carrito se generan automáticamente desde ahí (ya no hay que mantener
+   el mismo id en tres lugares).
+   ===================================================================== */
+
+// ============ CONFIG ============
+const WHATSAPP_NUMBER = '529987625469';          // +52 998 762 5469
+const CART_KEY        = 'basket94_cart_v2';
+const CITY_KEY        = 'basket94_city_v2';
+const NEWSLETTER_KEY  = 'basket94_newsletter_status';
+const REDUCED_MOTION  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Texto que se muestra en el detalle de TODOS los balones
+const PRODUCT_DESCRIPTION =
+  'Su construcción de piel sintética de alta resistencia está pensada para soportar el uso frecuente en superficies como concreto y duela, ofreciendo un excelente agarre y una gran durabilidad.';
+
+// Medidas reglamentarias por número de balón
+const SIZES = {
+  7: { label: 'varonil',         circ: '74.9–78.0 cm', peso: '567–650 g' },
+  6: { label: 'femenil / mixto', circ: '72.4–73.7 cm', peso: '510–567 g' },
 };
 
-const PRODUCT_DETAILS = {
-
-  'bg3800': {
-    badge: '#7',
-    tagline: 'ENTRENAMIENTO · FIBA APPROVED',
-    images: ['images/bg3800.jpg', 'images/3800-3.jpeg'],
-    description: 'Balón oficial FIBA con aprobación Nivel 1 vigente 2024–2028. Cuero premium para uso diario en cancha, con la durabilidad que pide el entrenamiento constante.',
-    specs: [
-      ['Talla', '7 (varonil)'],
-      ['Aprobación FIBA', 'Nivel 1, vigente 2024–2028'],
-      ['Circunferencia', '74.9–78.0 cm'],
-      ['Peso', '567–650 g'],
-    ],
-  },
-  'bg3800-5': {
-    badge: '#5',
-    tagline: 'COMPETENCIA · FIBA APPROVED',
-    images: ['images/bg3800-5.JPEG', 'images/bg3800-52.JPEG'],
-    description: 'Está pensado especialmente para niños que están comenzando o desarrollando sus habilidades en el básquetbol. Su tamaño #5 facilita el manejo, el bote y el control del balón, permitiendo que los pequeños jugadores puedan desarrollar su técnica con mayor confianza.',
-    specs: [
-      ['Talla', '5 (categorías infantiles o minibasket)'],
-      ['Circunferencia', '68.5 cm – 71 cm'],
-      ['Peso', '454 g – 510 g'],
-      ['Material', 'Cuero sintético premium composite'],
-    ],
-  },
-  'gg6x': {
-    badge: '#6',
-    tagline: 'FEMENIL · FIBA APPROVED CATEGORY 6',
-    images: ['images/gg6x 1.JPEG', 'images/gg6x 2.JPEG','images/gg6x 3.JPEG'],
-    description: 'Balón oficial femenil de Molten, talla 6, con aprobación FIBA vigente. La opción correcta para ligas femeniles y para jugadores mixtos de 9 a 12 años que ya juegan en talla estándar reducida.',
-    specs: [
-      ['Talla', '6 (femenil / mixto)'],
-      ['Circunferencia', '72.4–73.7 cm'],
-      ['Peso', '510–567 g'],
-      ['Categoría FIBA', 'Category 6'],
-    ],
-  },
-  'D3500': {
-    badge: '#7',
-    tagline: 'Especial para concreto',
-    images: ['images/D3500.JPEG', 'images/d3500 3.JPEG', 'images/d3500-4.JPEG', 'images/d3500-5.JPEG'],
-    description: 'Su construcción de piel sintética de alta resistencia está pensada para soportar el uso frecuente en superficies como concreto y duela, mientras que su textura proporciona un agarre firme incluso cuando las condiciones son húmedas.',
-    specs: [
-      ['Talla', '7 (varonil)'],
-      ['Circunferencia', '74.9–78.0 cm'],
-      ['Peso', '567–650 g'],
-    ],
-  },
-
-  'calcetas': {
-    badge: '',
-    tagline: 'NIKE ELITE · NBA',
-    images: ['images/calcetas.jpg', 'images/calcetas-2.jpg', 'images/calcetas-3.jpg'],
-    description: 'Calcetas Nike Elite con licencia oficial NBA, tecnología Dri-FIT y cojinete reforzado en la zona de impacto. Disponibles en blanco o negro.',
-    specs: [
-      ['Tallas disponibles', 'M y L'],
-      ['Tecnología', 'Dri-FIT'],
-      ['Colores', 'Blanco / Negro'],
-      ['Licencia', 'NBA oficial'],
-    ],
-    oldPrice: 250,
-  },
-  'rodilleras': {
-    badge: '',
-    tagline: 'PROTECCIÓN DE CANCHA',
-    images: ['images/rodilleras.jpg'],
-    description: 'Rodilleras tipo manga larga con panel acolchado tipo panal en la zona de la rodilla. Protección ligera que no limita el movimiento, ideal para quienes juegan cerca del área pintada.',
-    specs: [
-      ['Tallas disponibles', 'S, M, G'],
-      ['Panel', 'Acolchado tipo panal'],
-      ['Color', 'Negro'],
-      ['Presentación', 'Par'],
-    ],
-    hasSize: true,
-  },
+// Ciudades de entrega. cost: 0 = gratis · número = costo · null = por cotizar
+const CITIES = {
+  'cancun':           { name: 'Cancún',           cost: 0,    costLabel: 'Envío gratis' },
+  'puerto-morelos':   { name: 'Puerto Morelos',   cost: 100,  costLabel: '$100 MXN' },
+  'playa-del-carmen': { name: 'Playa del Carmen', cost: 100,  costLabel: '$100 MXN' },
+  'otra':             { name: 'Otra ciudad',      cost: null, costLabel: 'A cotizar' },
 };
-// ============ WHATSAPP BUBBLE ============
-function initWhatsappBubble(){
-  const bubble = document.getElementById('whatsappBubble');
-  if(!bubble) return;
 
-  function show(){
-    bubble.classList.add('is-visible');
-    setTimeout(() => bubble.classList.remove('is-visible'), 4000);
-  }
+// ============ CATÁLOGO ============
+// id      → nombre único sin espacios ni mayúsculas
+// size    → número de balón (7 o 6)
+// stock   → piezas disponibles (el carrito no deja pedir más que esto)
+// image   → ruta en /images  (minúsculas, sin espacios, sin #)
+// tag     → línea corta bajo el título y etiqueta del modal
+// extra   → filas adicionales de la ficha técnica
+const PRODUCTS = [
+  { id: 'gg7x', name: 'Molten GG7X', size: 7, price: 735, stock: 2,
+    image: 'images/gg7x.jpg', tag: 'Balón oficial FIBA · varonil',
+    extra: [['Homologación', 'FIBA Approved · Category 7'], ['Material', 'Piel sintética']] },
 
-  setTimeout(show, 4000);       // primera aparición
-  setInterval(show, 10000);     // se repite cada 10s
+  { id: 'gg6x', name: 'Molten GG6X', size: 6, price: 735, stock: 6,
+    image: 'images/gg6x.jpg', tag: 'Balón oficial FIBA · femenil',
+    extra: [['Homologación', 'FIBA Approved · Category 6'], ['Material', 'Piel sintética']] },
+
+  { id: 'bg3800', name: 'Molten BG3800', size: 7, price: 735, stock: 3,
+    image: 'images/bg3800.jpg', tag: 'Balón oficial FIBA · entrenamiento',
+    extra: [['Homologación', 'FIBA Approved'], ['Material', 'Piel sintética']] },
+
+  { id: 'bg4000', name: 'Molten BG4000', size: 7, price: 735, stock: 2,
+    image: 'images/bg4000.jpg', tag: 'Balón oficial FIBA · competencia',
+    extra: [['Homologación', 'FIBA Approved'], ['Material', 'Piel sintética']] },
+
+  { id: 'bg3800-world-cup-2023', name: 'Molten BG3800 World Cup 2023', size: 7, price: 735, stock: 3,
+    image: 'images/bg3800-world-cup-2023.jpg', tag: 'Edición Copa Mundial FIBA 2023',
+    extra: [['Edición', 'Copa Mundial FIBA 2023'], ['Material', 'Piel sintética']] },
+
+  { id: 'd3500-naranja', name: 'Molten D3500 Naranja', size: 7, price: 1100, stock: 1,
+    image: 'images/d3500-naranja.jpg', tag: 'Especial para concreto',
+    extra: [['Uso', 'Exterior (concreto)'], ['Material', 'Piel sintética']] },
+
+  { id: 'd3500-negro', name: 'Molten D3500 Negro', size: 7, price: 990, stock: 3,
+    image: 'images/d3500-negro.jpg', tag: 'Especial para concreto',
+    extra: [['Uso', 'Exterior (concreto)'], ['Material', 'Piel sintética']] },
+
+  { id: 'spalding-tf-silver', name: 'Spalding TF Silver Series', size: 7, price: 835, stock: 3,
+    image: 'images/spalding-tf-silver.jpg', tag: 'Para todas las superficies',
+    extra: [['Superficie', 'Todas las superficies'], ['Material', 'Piel sintética (composite leather)']] },
+
+  { id: 'spalding-super-flite', name: 'Spalding Super Flite', size: 7, price: 835, stock: 3,
+    image: 'images/spalding-super-flite.jpg', tag: 'Piel sintética composite',
+    extra: [['Material', 'Piel sintética (composite leather)']] },
+];
+
+const PRODUCT_BY_ID = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
+
+// ============ HELPERS ============
+function formatMXN(amount){
+  return '$' + amount.toLocaleString('es-MX') + ' MXN';
 }
-// ============ PRODUCT MODAL ============
+function productTitle(p){ return p.name + ' #' + p.size; }
+function specsFor(p){
+  const s = SIZES[p.size];
+  return [
+    ['Talla', p.size + ' (' + s.label + ')'],
+    ['Circunferencia', s.circ],
+    ['Peso', s.peso],
+    ...(p.extra || []),
+  ];
+}
+function escapeHTML(str){
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// ============ CATÁLOGO: render de tarjetas ============
+function renderProducts(){
+  const grid = document.getElementById('productGrid');
+  if(!grid) return;
+  grid.innerHTML = PRODUCTS.map(p => `
+    <article class="product-card" data-id="${p.id}">
+      <div class="product-card__media" data-detail="${p.id}">
+        <img src="${p.image}" alt="Balón ${escapeHTML(productTitle(p))}" loading="lazy" width="900" height="900">
+        <span class="product-card__badge">#${p.size}</span>
+      </div>
+      <div class="product-card__body">
+        <h3>${escapeHTML(productTitle(p))}</h3>
+        <p class="product-card__meta">${escapeHTML(p.tag)}</p>
+        <button class="product-card__viewlink" data-detail="${p.id}">Ver características →</button>
+        <div class="product-card__foot">
+          <span class="price">${formatMXN(p.price)}</span>
+          <button class="btn btn--small btn--primary" data-add="${p.id}">Agregar</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  // Un solo listener para todas las tarjetas
+  grid.addEventListener('click', (e) => {
+    const add = e.target.closest('[data-add]');
+    if(add){ addToCart(add.dataset.add); return; }
+    const detail = e.target.closest('[data-detail]');
+    if(detail){ openProductModal(detail.dataset.detail); }
+  });
+}
+
+// ============ MODAL DE CARACTERÍSTICAS ============
 let currentModalId = null;
 
 function openProductModal(id){
-  const details = PRODUCT_DETAILS[id];
-  if(!details) return;
+  const p = PRODUCT_BY_ID[id];
+  if(!p) return;
   currentModalId = id;
+  const title = productTitle(p);
 
-  const price = details.hasSize ? PRODUCT_CATALOG['rodilleras-M'].price : (PRODUCT_CATALOG[id] ? PRODUCT_CATALOG[id].price : 0);
-  const name = details.hasSize ? 'Rodilleras (par)' : (PRODUCT_CATALOG[id] ? PRODUCT_CATALOG[id].name : '');
-
-  document.getElementById('pmTagline').textContent = details.tagline;
-  document.getElementById('pmTitle').textContent = name;
-  document.getElementById('pmBadge').textContent = details.badge;
-  document.getElementById('pmBadge').style.display = details.badge ? '' : 'none';
-  document.getElementById('pmPrice').textContent = formatMXN(price);
-  document.getElementById('pmDesc').textContent = details.description;
-
-  const oldPriceEl = document.getElementById('pmPriceOld');
-  if(details.oldPrice){
-    oldPriceEl.textContent = formatMXN(details.oldPrice);
-    oldPriceEl.style.display = '';
-  } else {
-    oldPriceEl.style.display = 'none';
-  }
-
-  const specsEl = document.getElementById('pmSpecs');
-  specsEl.innerHTML = details.specs.map(([label, value]) =>
-    `<div><span>${label}</span><strong>${value}</strong></div>`
+  document.getElementById('pmTagline').textContent = p.tag;
+  document.getElementById('pmTitle').textContent = title;
+  document.getElementById('pmBadge').textContent = '#' + p.size;
+  document.getElementById('pmSizeNum').textContent = p.size;
+  document.getElementById('pmSizeText').textContent = 'Balón número ' + p.size + ' · ' + SIZES[p.size].label;
+  document.getElementById('pmPrice').textContent = formatMXN(p.price);
+  document.getElementById('pmDesc').textContent = PRODUCT_DESCRIPTION;
+  document.getElementById('pmSpecs').innerHTML = specsFor(p).map(([label, value]) =>
+    `<div><span>${escapeHTML(label)}</span><strong>${escapeHTML(value)}</strong></div>`
   ).join('');
 
-  const sizeWrap = document.getElementById('pmSizeWrap');
-  sizeWrap.hidden = !details.hasSize;
-
-  // Gallery
+  // Galería (si algún día agregas p.images = ['a.jpg','b.jpg'] salen miniaturas)
+  const images = p.images && p.images.length ? p.images : [p.image];
   const mainImg = document.getElementById('pmMainImg');
-  mainImg.src = details.images[0];
-  mainImg.alt = name;
+  mainImg.src = images[0];
+  mainImg.alt = 'Balón ' + title;
   const thumbsEl = document.getElementById('pmThumbs');
   thumbsEl.innerHTML = '';
-  if(details.images.length > 1){
-    details.images.forEach((src, i) => {
+  if(images.length > 1){
+    images.forEach((src, i) => {
       const t = document.createElement('img');
       t.src = src;
-      t.alt = name + ' foto ' + (i + 1);
+      t.alt = 'Balón ' + title + ' foto ' + (i + 1);
       if(i === 0) t.classList.add('is-active');
       t.addEventListener('click', () => {
         mainImg.src = src;
@@ -169,24 +180,214 @@ function closeProductModal(){
   currentModalId = null;
 }
 
-const SIZE_SPECS = {
-  '5': { circ: '68.5–71.0 cm', peso: '470–500 g', uso: 'Infantil / iniciación, 6–9 años' },
-  '7': { circ: '74.9–78.0 cm', peso: '567–650 g', uso: 'Varonil, cancha completa, 13+ años' },
-  '6': { circ: '72.4–73.7 cm', peso: '510–567 g', uso: 'Femenil / mixto, 9–12 años' },
-};
+// ============ ESTADO DEL CARRITO ============
+// Se limpian automáticamente productos que ya no existen en PRODUCTS
+// y cantidades mayores al stock (evita carritos "fantasma").
+function getCart(){
+  let raw = {};
+  try{ raw = JSON.parse(localStorage.getItem(CART_KEY) || '{}') || {}; }catch(e){ raw = {}; }
+  const clean = {};
+  Object.entries(raw).forEach(([id, qty]) => {
+    const p = PRODUCT_BY_ID[id];
+    const n = Math.floor(Number(qty));
+    if(p && n > 0) clean[id] = Math.min(n, p.stock);
+  });
+  return clean;
+}
+function saveCart(cart){
+  try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+  catch(e){ console.error('No se pudo guardar el carrito', e); }
+}
+function getCity(){
+  try{
+    const c = localStorage.getItem(CITY_KEY);
+    return CITIES[c] ? c : null;
+  }catch(e){ return null; }
+}
+function setCity(key){
+  try{ localStorage.setItem(CITY_KEY, key); }catch(e){}
+  renderCart();
+}
 
-const CART_KEY = 'basket94_cart';
-const FREE_SHIPPING_THRESHOLD = 1200;
-const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function addToCart(id){
+  const p = PRODUCT_BY_ID[id];
+  if(!p) return;
+  const cart = getCart();
+  cart[id] = Math.min((cart[id] || 0) + 1, p.stock);
+  saveCart(cart);
+  renderCart();
+  openCart();
+}
+function changeQty(id, delta){
+  const p = PRODUCT_BY_ID[id];
+  const cart = getCart();
+  if(!p || !cart[id]) return;
+  cart[id] = Math.min(cart[id] + delta, p.stock);
+  if(cart[id] <= 0) delete cart[id];
+  saveCart(cart);
+  renderCart();
+}
+function removeFromCart(id){
+  const cart = getCart();
+  delete cart[id];
+  saveCart(cart);
+  renderCart();
+}
 
-// ============ NEWSLETTER POPUP ============
-const NEWSLETTER_KEY = 'basket94_newsletter_status';
+// ============ PEDIDO POR WHATSAPP ============
+function cartSubtotal(cart){
+  return Object.entries(cart).reduce((sum, [id, qty]) => sum + PRODUCT_BY_ID[id].price * qty, 0);
+}
 
+function buildWhatsappMessage(cart, cityKey){
+  const city = CITIES[cityKey];
+  const subtotal = cartSubtotal(cart);
+  const lines = ['Hola Basket94, quiero hacer este pedido:', ''];
+
+  Object.entries(cart).forEach(([id, qty]) => {
+    const p = PRODUCT_BY_ID[id];
+    lines.push('• ' + qty + ' x ' + productTitle(p) + ' — ' + formatMXN(p.price * qty));
+  });
+
+  lines.push('', 'Ciudad: ' + city.name, 'Subtotal: ' + formatMXN(subtotal));
+  if(city.cost === null){
+    lines.push('Envío: por cotizar', 'Total (sin envío): ' + formatMXN(subtotal));
+  }else{
+    lines.push('Envío: ' + (city.cost === 0 ? 'Gratis' : formatMXN(city.cost)));
+    lines.push('Total a pagar: ' + formatMXN(subtotal + city.cost));
+  }
+  lines.push('', 'Te comparto mi ubicación por aquí para coordinar la entrega. Pago al recibir (efectivo o transferencia).');
+  return lines.join('\n');
+}
+
+function setCheckoutState(enabled, hint, href){
+  const btn = document.getElementById('waCheckout');
+  document.getElementById('cartHint').textContent = hint;
+  if(enabled){
+    btn.classList.remove('is-disabled');
+    btn.setAttribute('aria-disabled', 'false');
+    btn.removeAttribute('tabindex');
+    btn.href = href;
+    btn.target = '_blank';
+    btn.rel = 'noopener';
+  }else{
+    btn.classList.add('is-disabled');
+    btn.setAttribute('aria-disabled', 'true');
+    btn.tabIndex = -1;
+    btn.removeAttribute('href');
+    btn.removeAttribute('target');
+  }
+}
+
+// ============ RENDER DEL CARRITO ============
+const PIN_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.800 12 21 12 21z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.500" r="2.500" fill="currentColor"/></svg>';
+
+function renderCart(){
+  const cart = getCart();
+  const ids = Object.keys(cart);
+  const cityKey = getCity();
+  const city = cityKey ? CITIES[cityKey] : null;
+
+  const itemsEl   = document.getElementById('cartItems');
+  const countEl   = document.getElementById('cartCount');
+  const cityStep  = document.getElementById('cityStep');
+  const sumStep   = document.getElementById('summaryStep');
+
+  // Contador del ícono: solo se muestra si hay productos
+  const count = ids.reduce((n, id) => n + cart[id], 0);
+  countEl.textContent = String(count);
+  countEl.hidden = count === 0;
+
+  // Carrito vacío: se limpia todo
+  if(ids.length === 0){
+    itemsEl.innerHTML = '<p class="cart-empty">Aún no has agregado nada. Elige tu balón.</p>';
+    cityStep.hidden = true;
+    sumStep.hidden = true;
+    setCheckoutState(false, 'Agrega al menos un balón para continuar.');
+    return;
+  }
+
+  // Paso 1: productos
+  itemsEl.innerHTML = ids.map(id => {
+    const p = PRODUCT_BY_ID[id];
+    const qty = cart[id];
+    const atMax = qty >= p.stock;
+    return `
+      <div class="cart-item">
+        <div>
+          <div class="cart-item__name">${escapeHTML(productTitle(p))}</div>
+          <div class="cart-item__price">${formatMXN(p.price)} c/u</div>
+          ${atMax ? '<div class="cart-item__note">Máximo disponible</div>' : ''}
+        </div>
+        <div class="cart-item__qty">
+          <button data-decrement="${id}" aria-label="Quitar uno">−</button>
+          <span>${qty}</span>
+          <button data-increment="${id}" aria-label="Agregar uno" ${atMax ? 'disabled' : ''}>+</button>
+        </div>
+        <button class="cart-item__remove" data-remove="${id}">Quitar</button>
+      </div>`;
+  }).join('');
+
+  // Paso 2: ciudad (botones visuales)
+  cityStep.hidden = false;
+  document.getElementById('cityOptions').innerHTML = Object.entries(CITIES).map(([key, c]) => `
+    <button type="button" class="city-btn ${key === cityKey ? 'is-selected' : ''}" role="radio"
+            aria-checked="${key === cityKey}" data-city="${key}">
+      <span class="city-btn__name">${PIN_ICON}${c.name}</span>
+      <span class="city-btn__cost">${c.costLabel}</span>
+    </button>`).join('');
+  document.getElementById('cityNote').textContent =
+    cityKey === 'otra' ? 'Te confirmamos el costo de envío por WhatsApp.' : '';
+
+  // Paso 3: resumen
+  const subtotal = cartSubtotal(cart);
+  sumStep.hidden = false;
+  document.getElementById('sumSubtotal').textContent = formatMXN(subtotal);
+
+  const shipEl  = document.getElementById('sumShipping');
+  const totalEl = document.getElementById('sumTotal');
+  const labelEl = document.getElementById('sumTotalLabel');
+  shipEl.classList.remove('is-free');
+
+  if(!city){
+    shipEl.textContent = 'Elige tu ciudad';
+    labelEl.textContent = 'Total';
+    totalEl.textContent = formatMXN(subtotal);
+  }else if(city.cost === null){
+    shipEl.textContent = 'Por cotizar';
+    labelEl.textContent = 'Total (sin envío)';
+    totalEl.textContent = formatMXN(subtotal);
+  }else{
+    shipEl.textContent = city.cost === 0 ? 'Gratis' : formatMXN(city.cost);
+    if(city.cost === 0) shipEl.classList.add('is-free');
+    labelEl.textContent = 'Total a pagar';
+    totalEl.textContent = formatMXN(subtotal + city.cost);
+  }
+
+  // Botón de WhatsApp: solo se habilita con productos + ciudad
+  if(!city){
+    setCheckoutState(false, 'Elige tu ciudad para habilitar el pedido por WhatsApp.');
+  }else{
+    const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(buildWhatsappMessage(cart, cityKey));
+    setCheckoutState(true, 'Se abrirá WhatsApp con tu pedido listo para confirmar.', url);
+  }
+}
+
+// ============ CAJÓN DEL CARRITO ============
+function openCart(){
+  document.getElementById('cartDrawer').classList.add('is-open');
+  document.getElementById('cartOverlay').classList.add('is-open');
+}
+function closeCart(){
+  document.getElementById('cartDrawer').classList.remove('is-open');
+  document.getElementById('cartOverlay').classList.remove('is-open');
+}
+
+// ============ POPUP DE SUSCRIPCIÓN ============
 function openNewsletterPopup(){
   document.getElementById('newsletterPopup').classList.add('is-open');
   document.getElementById('newsletterOverlay').classList.add('is-open');
 }
-
 function closeNewsletterPopup(){
   document.getElementById('newsletterPopup').classList.remove('is-open');
   document.getElementById('newsletterOverlay').classList.remove('is-open');
@@ -202,31 +403,26 @@ function initNewsletterPopup(){
   let status = null;
   try{ status = localStorage.getItem(NEWSLETTER_KEY); }catch(e){ status = null; }
 
-  // Only show once per browser: skip if already subscribed or dismissed
+  // Se muestra una sola vez por navegador
   if(status === 'subscribed' || status === 'dismissed') return;
 
-  // Appears right as the preloader finishes fading out
-  setTimeout(openNewsletterPopup, 3800);
+  setTimeout(openNewsletterPopup, 3800);   // justo cuando termina el preloader
 
-  closeBtn.addEventListener('click', () => {
+  const dismiss = () => {
     closeNewsletterPopup();
     try{ localStorage.setItem(NEWSLETTER_KEY, 'dismissed'); }catch(e){}
-  });
-  overlay.addEventListener('click', () => {
-    closeNewsletterPopup();
-    try{ localStorage.setItem(NEWSLETTER_KEY, 'dismissed'); }catch(e){}
-  });
+  };
+  closeBtn.addEventListener('click', dismiss);
+  overlay.addEventListener('click', dismiss);
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.getElementById('newsletterEmail').value.trim();
     if(!email) return;
-
     try{
       localStorage.setItem(NEWSLETTER_KEY, 'subscribed');
       localStorage.setItem('basket94_newsletter_email', email);
     }catch(err){}
-
     form.hidden = true;
     document.getElementById('newsletterSuccess').hidden = false;
   });
@@ -239,29 +435,64 @@ function initPreloader(){
   if(!preloader || !fill) return;
 
   document.body.style.overflow = 'hidden';
-
-  // Kick off the fill animation on the next frame
-  requestAnimationFrame(() => {
-    fill.style.width = '100%';
-  });
+  requestAnimationFrame(() => { fill.style.width = '100%'; });
 
   setTimeout(() => {
     preloader.classList.add('is-hidden');
     document.body.style.overflow = '';
+    restartHeroVideo();                      // el video arranca desde el inicio al revelar la página
     setTimeout(() => { preloader.style.display = 'none'; }, 500);
   }, 3000);
 }
 
-// ============ HERO SLIDER + PARALLAX ============
+// ============ WHATSAPP BURBUJA ============
+function initWhatsappBubble(){
+  const bubble = document.getElementById('whatsappBubble');
+  if(!bubble) return;
+  function show(){
+    bubble.classList.add('is-visible');
+    setTimeout(() => bubble.classList.remove('is-visible'), 4000);
+  }
+  setTimeout(show, 4000);
+  setInterval(show, 10000);
+}
+
+// ============ HERO: SLIDER + PARALLAX + VIDEO ============
+function restartHeroVideo(){
+  const video = document.getElementById('heroVideo');
+  if(!video || REDUCED_MOTION) return;
+  video.currentTime = 0;
+  const p = video.play();
+  if(p && p.catch) p.catch(() => {});
+}
+
 function initHero(){
   const hero = document.getElementById('top');
   const slider = document.getElementById('heroSlider');
   const slides = document.querySelectorAll('.hero__slide');
   const dots = document.querySelectorAll('.hero__dots button');
+  const video = document.getElementById('heroVideo');
+
+  // Video del iPhone: silenciado + inline para que el autoplay funcione en móvil
+  if(video){
+    video.muted = true;
+    if(REDUCED_MOTION){
+      video.removeAttribute('autoplay');
+      video.pause();                         // se queda el póster (conversación completa)
+    }else if('IntersectionObserver' in window){
+      // Pausa el video cuando el hero no se ve (ahorra batería y datos)
+      new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){ const p = video.play(); if(p && p.catch) p.catch(() => {}); }
+          else video.pause();
+        });
+      }, { threshold: 0.15 }).observe(video);
+    }
+  }
+
   if(!hero || !slider || slides.length === 0) return;
 
   let current = 0;
-
   function goTo(index){
     slides[current].classList.remove('is-active');
     dots[current]?.classList.remove('is-active');
@@ -269,18 +500,9 @@ function initHero(){
     slides[current].classList.add('is-active');
     dots[current]?.classList.add('is-active');
   }
+  setInterval(() => goTo((current + 1) % slides.length), 5000);
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-  // Autoplay slider
-  setInterval(() => {
-    goTo((current + 1) % slides.length);
-  }, 5000);
-
-  // Manual dots
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => goTo(i));
-  });
-
-  // Parallax on scroll (skipped if reduced motion is preferred)
   if(!REDUCED_MOTION){
     let ticking = false;
     window.addEventListener('scroll', () => {
@@ -288,219 +510,47 @@ function initHero(){
       ticking = true;
       requestAnimationFrame(() => {
         const rect = hero.getBoundingClientRect();
-        const offset = rect.top * 0.35; // parallax factor
-        slider.style.transform = `translate3d(0, ${offset}px, 0)`;
+        slider.style.transform = `translate3d(0, ${rect.top * 0.35}px, 0)`;
         ticking = false;
       });
     }, { passive: true });
   }
 }
 
-// ============ STATE ============
-function getCart(){
-  try{
-    const raw = localStorage.getItem(CART_KEY);
-    return raw ? JSON.parse(raw) : {};
-  }catch(e){
-    return {};
-  }
-}
-
-function saveCart(cart){
-  try{
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
-  }catch(e){
-    console.error('No se pudo guardar el carrito', e);
-  }
-}
-
-function addToCart(id){
-  const cart = getCart();
-  cart[id] = (cart[id] || 0) + 1;
-  saveCart(cart);
-  renderCart();
-  openCart();
-}
-
-function changeQty(id, delta){
-  const cart = getCart();
-  if(!cart[id]) return;
-  cart[id] += delta;
-  if(cart[id] <= 0) delete cart[id];
-  saveCart(cart);
-  renderCart();
-}
-
-function removeFromCart(id){
-  const cart = getCart();
-  delete cart[id];
-  saveCart(cart);
-  renderCart();
-}
-
-// ============ RENDER CART ============
-function formatMXN(amount){
-  return '$' + amount.toLocaleString('es-MX') + ' MXN';
-}
-
-function updateShippingBar(total){
-  const wrap = document.getElementById('cartShipping');
-  const msg = document.getElementById('cartShippingMsg');
-  const fill = document.getElementById('cartShippingFill');
-  const percent = Math.min(100, (total / FREE_SHIPPING_THRESHOLD) * 100);
-  fill.style.width = percent + '%';
-
-  if(total >= FREE_SHIPPING_THRESHOLD){
-    msg.textContent = '🎉 ¡Ya tienes envío gratis!';
-    wrap.classList.add('is-unlocked');
-  } else {
-    msg.textContent = 'Te faltan ' + formatMXN(FREE_SHIPPING_THRESHOLD - total) + ' para envío gratis';
-    wrap.classList.remove('is-unlocked');
-  }
-}
-
-function renderCart(){
-  const cart = getCart();
-  const itemsEl = document.getElementById('cartItems');
-  const emptyEl = document.getElementById('cartEmpty');
-  const totalEl = document.getElementById('cartTotal');
-  const countEl = document.getElementById('cartCount');
-
-  const ids = Object.keys(cart);
-  itemsEl.innerHTML = '';
-
-  if(ids.length === 0){
-    itemsEl.appendChild(emptyEl);
-    totalEl.textContent = formatMXN(0);
-    countEl.textContent = '0';
-    updateShippingBar(0);
-    return;
-  }
-
-  let total = 0;
-  let count = 0;
-
-  ids.forEach(id => {
-    const product = PRODUCT_CATALOG[id];
-    if(!product) return;
-    const qty = cart[id];
-    const subtotal = product.price * qty;
-    total += subtotal;
-    count += qty;
-
-    const row = document.createElement('div');
-    row.className = 'cart-item';
-    row.innerHTML = `
-      <div>
-        <div class="cart-item__name">${product.name}</div>
-        <div class="cart-item__price">${formatMXN(product.price)} c/u</div>
-      </div>
-      <div class="cart-item__qty">
-        <button data-decrement="${id}" aria-label="Quitar uno">−</button>
-        <span>${qty}</span>
-        <button data-increment="${id}" aria-label="Agregar uno">+</button>
-      </div>
-      <button class="cart-item__remove" data-remove="${id}">Quitar</button>
-    `;
-    itemsEl.appendChild(row);
-  });
-
-  totalEl.textContent = formatMXN(total);
-  countEl.textContent = String(count);
-  updateShippingBar(total);
-}
-
-// ============ CART DRAWER OPEN/CLOSE ============
-function openCart(){
-  document.getElementById('cartDrawer').classList.add('is-open');
-  document.getElementById('cartOverlay').classList.add('is-open');
-}
-
-function closeCart(){
-  document.getElementById('cartDrawer').classList.remove('is-open');
-  document.getElementById('cartOverlay').classList.remove('is-open');
-}
-
-// ============ SIZE PICKER ============
-function setActiveSize(size){
-  document.querySelectorAll('.fit-tab').forEach(tab => {
-    tab.classList.toggle('is-active', tab.dataset.size === size);
-  });
-  const spec = SIZE_SPECS[size];
-  document.getElementById('specCirc').textContent = spec.circ;
-  document.getElementById('specPeso').textContent = spec.peso;
-  document.getElementById('specUso').textContent = spec.uso;
-}
-
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
   initPreloader();
   initNewsletterPopup();
   initHero();
   renderCart();
   initWhatsappBubble();
 
-  // Add to cart buttons (products with fixed id)
-  document.querySelectorAll('[data-add]').forEach(btn => {
-    btn.addEventListener('click', () => addToCart(btn.dataset.add));
-  });
-
-  // Product detail modal: open from the product image or the "Ver detalle" link only
-  // (never from the whole card, to avoid clashing with the Agregar button/select)
-  document.querySelectorAll('.product-card[data-detail]').forEach(card => {
-    const id = card.dataset.detail;
-    const media = card.querySelector('.product-card__media');
-    const link = card.querySelector('.product-card__viewlink');
-    if(media) media.addEventListener('click', () => openProductModal(id));
-    if(link) link.addEventListener('click', () => openProductModal(id));
-  });
+  // Modal de características
   document.getElementById('productModalClose').addEventListener('click', closeProductModal);
   document.getElementById('productModalOverlay').addEventListener('click', closeProductModal);
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape'){
-      closeProductModal();
-      if(document.getElementById('newsletterPopup').classList.contains('is-open')){
-        closeNewsletterPopup();
-        try{ localStorage.setItem(NEWSLETTER_KEY, 'dismissed'); }catch(err){}
-      }
-    }
-  });
   document.getElementById('pmAddBtn').addEventListener('click', () => {
     if(!currentModalId) return;
-    const details = PRODUCT_DETAILS[currentModalId];
-    if(details && details.hasSize){
-      const size = document.getElementById('pmSize').value;
-      addToCart('rodilleras-' + size);
-    } else {
-      addToCart(currentModalId);
-    }
+    addToCart(currentModalId);
     closeProductModal();
   });
 
-  // Rodilleras: variant depends on selected size
-  const rodillerasBtn = document.getElementById('addRodilleras');
-  if(rodillerasBtn){
-    rodillerasBtn.addEventListener('click', () => {
-      const size = document.getElementById('rodillerasSize').value;
-      addToCart('rodilleras-' + size);
-    });
-  }
+  // Escape cierra modal y popup
+  document.addEventListener('keydown', (e) => {
+    if(e.key !== 'Escape') return;
+    closeProductModal();
+    if(document.getElementById('newsletterPopup').classList.contains('is-open')){
+      closeNewsletterPopup();
+      try{ localStorage.setItem(NEWSLETTER_KEY, 'dismissed'); }catch(err){}
+    }
+  });
 
-  // Combo: variant depends on selected rodilleras size
-  const comboBtn = document.getElementById('addCombo');
-  if(comboBtn){
-    comboBtn.addEventListener('click', () => {
-      const size = document.getElementById('comboSize').value;
-      addToCart('combo-cancha-' + size);
-    });
-  }
-
-  // Cart drawer controls
+  // Cajón del carrito
   document.getElementById('cartBtn').addEventListener('click', openCart);
   document.getElementById('cartClose').addEventListener('click', closeCart);
   document.getElementById('cartOverlay').addEventListener('click', closeCart);
 
-  // Quantity / remove (event delegation, since rows are re-rendered)
+  // Cantidades / quitar (delegación, porque las filas se vuelven a dibujar)
   document.getElementById('cartItems').addEventListener('click', (e) => {
     const inc = e.target.closest('[data-increment]');
     const dec = e.target.closest('[data-decrement]');
@@ -510,35 +560,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if(rem) removeFromCart(rem.dataset.remove);
   });
 
-  // Checkout (placeholder — se conectará a Shopify)
-  document.getElementById('checkoutBtn').addEventListener('click', () => {
-    const cart = getCart();
-    if(Object.keys(cart).length === 0){
-      alert('Tu carrito está vacío. Agrega un balón primero.');
-      return;
-    }
-    alert('Aquí se conectará el checkout real de Shopify.');
+  // Elegir ciudad
+  document.getElementById('cityOptions').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-city]');
+    if(btn) setCity(btn.dataset.city);
   });
 
-  // Size tabs
-  document.querySelectorAll('.fit-tab').forEach(tab => {
-    tab.addEventListener('click', () => setActiveSize(tab.dataset.size));
+  // El botón de WhatsApp deshabilitado no hace nada
+  document.getElementById('waCheckout').addEventListener('click', (e) => {
+    if(e.currentTarget.getAttribute('aria-disabled') === 'true') e.preventDefault();
   });
 
-  // Smooth scroll buttons
+  // Botones con scroll suave (CTA del hero)
   document.querySelectorAll('[data-scroll]').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelector(btn.dataset.scroll)?.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  // Mobile nav toggle
+  // Menú móvil
   const burger = document.getElementById('burgerBtn');
   const links = document.getElementById('navLinks');
   burger.addEventListener('click', () => {
-    links.classList.toggle('is-open');
+    const open = links.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', String(open));
   });
   links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => links.classList.remove('is-open'));
+    a.addEventListener('click', () => {
+      links.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
   });
 });
