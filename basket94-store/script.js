@@ -56,15 +56,15 @@ const PRODUCTS = [
     image: 'images/bg4000.jpg', tag: 'Balón oficial FIBA · competencia',
     extra: [['Homologación', 'FIBA Approved'], ['Material', 'Piel sintética']] },
 
-  { id: 'bg3800-world-cup-2023', name: 'Molten BG3800 World Cup 2023', size: 7, price: 735, stock: 3,
+  { id: 'bg3800-world-cup-2023', name: 'Molten BG3800 World Cup 2023', size: 7, price: 785, stock: 3,
     image: 'images/bg3800-world-cup-2023.jpg', tag: 'Edición Copa Mundial FIBA 2023',
     extra: [['Edición', 'Copa Mundial FIBA 2023'], ['Material', 'Piel sintética']] },
 
-  { id: 'd3500-naranja', name: 'Molten D3500 Naranja', size: 7, price: 1100, stock: 1,
+  { id: 'd3500-naranja', name: 'Molten D3500 Naranja', size: 7, price: 1150, stock: 1,
     image: 'images/d3500-naranja.jpg', tag: 'Especial para concreto',
     extra: [['Uso', 'Exterior (concreto)'], ['Material', 'Piel sintética']] },
 
-  { id: 'd3500-negro', name: 'Molten D3500 Negro', size: 7, price: 990, stock: 3,
+  { id: 'd3500-negro', name: 'Molten D3500 Negro', size: 7, price: 1150, stock: 3,
     image: 'images/d3500-negro.jpg', tag: 'Especial para concreto',
     extra: [['Uso', 'Exterior (concreto)'], ['Material', 'Piel sintética']] },
 
@@ -72,7 +72,7 @@ const PRODUCTS = [
     image: 'images/spalding-tf-silver.jpg', tag: 'Para todas las superficies',
     extra: [['Superficie', 'Todas las superficies'], ['Material', 'Piel sintética (composite leather)']] },
 
-  { id: 'spalding-super-flite', name: 'Spalding Super Flite', size: 7, price: 835, stock: 3,
+  { id: 'spalding-super-flite', name: 'Spalding Super Flite', size: 7, price: 935, stock: 3,
     image: 'images/spalding-super-flite.jpg', tag: 'Piel sintética composite',
     extra: [['Material', 'Piel sintética (composite leather)']] },
 ];
